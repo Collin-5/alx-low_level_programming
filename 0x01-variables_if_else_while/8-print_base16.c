@@ -14,14 +14,19 @@ int main(void)
 	while (a <= '9')
 	{
 		putchar(a);
+
 		a++;
 	}
 
-	while (a_to_z <= f);
+
+	while (a_to_z <= 'f')
 	{
 		putchar(a_to_z);
+
 		a_to_z++;
 	}
+
+	putchar('\n');
 
 	return (0);
 }
