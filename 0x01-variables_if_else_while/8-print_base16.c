@@ -19,11 +19,11 @@ int main(void)
 	}
 
 
-	while (a_to_z <= 'f')
+	while (a_to_f <= 'f')
 	{
-		putchar(a_to_z);
+		putchar(a_to_f);
 
-		a_to_z++;
+		a_to_f++;
 	}
 
 	putchar('\n');
