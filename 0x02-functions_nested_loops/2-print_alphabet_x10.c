@@ -1,12 +1,11 @@
 #include "holberton.h"
 
 /**
- * print_alphabet_x10 - print alphabet lowercase ten times
- *
- * Return: always 0
+ * print_alphabet_x10 - print lowercase alphabet ten times
+ * Return: 0
  */
 
-void print_alphabet_x10(void);
+void print_alphabet_x10(void)
 {
 	char alpha;
 	int counter;
@@ -17,7 +16,6 @@ void print_alphabet_x10(void);
 		{
 			_putchar(alpha);
 		}
-
 		_putchar('\n');
 	}
 }
