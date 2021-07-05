@@ -1,32 +1,24 @@
-#include "holberton.h"
+#include <stdio.h>
 
 /**
- * _strspn - return length of string that matches values consistently
- * @s: string to search
- * @accept: target matches
- * Return: number of bytes consecutively matched
+ * _strpbrk - searches a string for any of a set of bytes
+ * @s: pointer to the string
+ * @accept: pointer to the string of searched bytes
+ *
+ * Return: length of the prefix
  */
-
-unsigned int _strspn(char *s, char *accept)
+char *_strpbrk(char *s, char *accept)
 {
-	int i = 0, j;
-	int matches = 0;
+	unsigned int i, j;
 
-	while (s[i] != '\0') /*iterate through string*/
+	for (i = 0; s[i] > '\0'; i++)
 	{
-
-		for (j = 0; accept[j] != '\0'; j++) /*iterate through target*/
+		for (j = 0; accept[j] > '\0'; j++)
 		{
-			if (s[i] == accept[j]) /*record & break at first match*/
-			{
-				matches++;
-				break;
-			}
-			if (accept[j + 1] == '\0' && s[i] != accept[j])
-				return (matches);/*return if idx doesn't match*/
+			if (s[i] == accept[j])
+				return (s + i);
 		}
-		i++;
 	}
-	return (matches); /* return num if all match till end */
 
+	return (0);
 }
