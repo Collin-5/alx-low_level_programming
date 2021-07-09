@@ -1,0 +1,1 @@
+tatic c liblaries
