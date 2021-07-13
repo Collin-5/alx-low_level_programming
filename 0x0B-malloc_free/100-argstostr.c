@@ -1,62 +1,61 @@
-#include <stdlib.h>
 #include "holberton.h"
+#include "stdlib.h"
 
 /**
- * _strlen - returns the length of a string
- * @s: string we find the length of
- *
- * Return: length of the string
+ * _strlen - calculate the length of string
+ * @s: string to be calculated
+ * Return: length of string
  */
 
 int _strlen(char *s)
 {
-	int x = 0;
+	int l = 0;
 
-	while (*(s + x) != '\0')
-		x++;
-	return (x);
+	while (s[l] != '\0')
+	{
+		l++;
+	}
+	return (l);
 }
 
 /**
- * argstostr - concatenates all the arguments of the program
- * @ac: number of arguments
- * @av: array of arguments
- *
- * Return: returns a pointer to the concatenated string
+ * argstostr - prints argument passed new line
+ * @ac: argument count
+ * @av: argument vector
+ * Return: Null if ac = 0 or av = null or pointer fail. Return value of a
  */
 
 char *argstostr(int ac, char **av)
 {
-	int x, y, z, length;
-	char *s;
 
-	length = 1;
-	z = 0;
+	char *a;
+	int i;
+	int c = 0;
+	int n = 0;
+	int l = 0;
 
 	if (ac == 0 || av == NULL)
 		return (NULL);
 
-	for (x = 0; x < ac; x++)
+	for (i = 0; i < ac; i++)
 	{
-		length += _strlen(av[x]) + 1;
+		l += _strlen(av[i]);
 	}
 
-	s = malloc(sizeof(char) * length);
-	if (s == NULL)
-	{
+	a = malloc(sizeof(char) * l + 1);
+
+	if (a == NULL)
 		return (NULL);
-	}
 
-	for (x = 0; x < ac; x++)
+	for (i = 0; i < ac; i++)
 	{
-		for (y = 0; y < _strlen(av[x]); y++)
+		for (c = 0; av[i][c] != '\0'; c++, n++)
 		{
-			s[z] = av[x][y];
-			z++;
+			a[n] = av[i][c];
 		}
-		s[z] = '\n';
-		z++;
+		a[n] = '\n';
+		n++;
 	}
-	s[z] = '\0';
-	return (s);
+	a[n] = '\0';
+	return (a);
 }
