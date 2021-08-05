@@ -1,4 +1,4 @@
-#include "main.h"
+#include "holberton.h"
 
 /**
  * binary_to_uint - convert binary to unsigned int
@@ -34,5 +34,4 @@ unsigned int binary_to_uint(const char *b)
 	}
 
 	return (sum);
-}
 
