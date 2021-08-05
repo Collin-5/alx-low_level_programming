@@ -1,58 +1,63 @@
 #include "main.h"
 
 /**
- * _strlen - compute string const len
- * @s: takes a string
- * Return: length
+ * _pow - returns the value of x
+ * to the power of y
+ * @x: base
+ * @y: exp
+ *
+ * Return: x powered by y
  */
-
-int _strlen(const char *s)
+int _pow(int x, int y)
 {
-	int len = 0;
+	if (y < 0)
+		return (-1);
 
-	while (s[len] != '\0')
-	{
-		len++;
-	}
-	return (len);
+	if (y == 0)
+		return (1);
+	else
+		return (x * _pow(x, y - 1));
 }
 
 /**
- * binary_to_uint - conver binary to unsigned int
- * @b: string to be converted
- * Return: decimal number
+ * _strlen - returns the length of a string
+ * @s: poineter
+ *
+ * Return: the length of a string
  */
-
-unsigned int binary_to_uint(const char *b)
+int _strlen(const char *s)
 {
+	int i = 0;
 
-	unsigned int sum = 0;
-	unsigned int base_2 = 1;
-	int len;
-	unsigned int conv;
+	while (s[i] != 0)
+		i++;
 
-	if (b != NULL)
-	{
-		len = _strlen(b) - 1;
-
-		while (len >= 0)
-		{
-			conv = b[len] - '0';
-
-			if (conv != 1 && conv != 0)
-				return (0);
-
-			if (conv == 0)
-				sum += 0;
-
-			if (conv == 1)
-				sum += base_2;
-
-			len--;
-			base_2 *= 2;
-		}
-		return (sum);
-	}
-	return (0);
+	return (i);
 }
 
+/**
+ * binary_to_uint - converts a binary number to an unsigned int
+ * @b: pointer to a string that represents binary number
+ *
+ * Return: unsigned int, converted from binary
+ */
+unsigned int binary_to_uint(const char *b)
+{
+	int i, len;
+	unsigned int res;
+
+	if (!b)
+		return (0);
+
+	len = _strlen(b) - 1, res = 0;
+
+	for (i = len; i >= 0; i--)
+	{
+		if (b[i] < '0' || b[i] > '1')
+			return (0);
+
+		res += (b[i] - 48) * _pow(2, (i - len) * -1);
+	}
+
+	return (res);
+}
