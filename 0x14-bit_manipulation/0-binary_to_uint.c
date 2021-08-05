@@ -1,63 +1,26 @@
 #include "main.h"
 
 /**
- * _pow - returns the value of x
- * to the power of y
- * @x: base
- * @y: exp
+ * binary_to_uint - returns binary in decimal
+ * @b: pointer to a binary string
  *
- * Return: x powered by y
- */
-int _pow(int x, int y)
-{
-	if (y < 0)
-		return (-1);
-
-	if (y == 0)
-		return (1);
-	else
-		return (x * _pow(x, y - 1));
-}
-
-/**
- * _strlen - returns the length of a string
- * @s: poineter
- *
- * Return: the length of a string
- */
-int _strlen(const char *s)
-{
-	int i = 0;
-
-	while (s[i] != 0)
-		i++;
-
-	return (i);
-}
-
-/**
- * binary_to_uint - converts a binary number to an unsigned int
- * @b: pointer to a string that represents binary number
- *
- * Return: unsigned int, converted from binary
+ * Return: decimal
  */
 unsigned int binary_to_uint(const char *b)
 {
-	int i, len;
-	unsigned int res;
+	unsigned int decimal = 0;
 
-	if (!b)
+	if (b == NULL)
 		return (0);
-
-	len = _strlen(b) - 1, res = 0;
-
-	for (i = len; i >= 0; i--)
+	while (*b)
 	{
-		if (b[i] < '0' || b[i] > '1')
+		if (*b == '0')
+			decimal <<= 1;
+		else if (*b == '1')
+			decimal = (decimal << 1) | 1;
+		else
 			return (0);
-
-		res += (b[i] - 48) * _pow(2, (i - len) * -1);
+		b++;
 	}
-
-	return (res);
+	return (decimal);
 }
