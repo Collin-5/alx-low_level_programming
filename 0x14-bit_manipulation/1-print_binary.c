@@ -1,4 +1,5 @@
-#includ "main.h"
+#include "main.h"
+#include "holberton.h"
 #include <stdio.h>
 /**
  * print_binary - converts unsigned int to binary
