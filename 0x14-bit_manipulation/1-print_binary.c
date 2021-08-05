@@ -1,34 +1,33 @@
 #include "holberton.h"
-
+#include <stdio.h>
 /**
- * print_binary - prints the binary value
- * @n: take an int
+ * print_binary - converts unsigned int to binary
+ * @n: unsigned int
+ * Return: binary
  */
-
 void print_binary(unsigned long int n)
 {
 
-	int count = 0;
-	unsigned long int check;
-	unsigned long int copy_n = n;
+	unsigned long int n_copy = n, mask = 1;
+	int len = 0;
 
-	if (n == 0)
-		_putchar('0');
-
-	while (copy_n > 0)
+	while (n_copy > 0)
 	{
-		copy_n >>= 1;
-		count++;
+		len++;
+		n_copy >>= 1;
 	}
-	count--;
+	len -= 1;
 
-	while (count >= 0)
+	if (len > 0) /* create mask based on length of num */
+		mask = mask << len;
+
+	while (mask > 0) /* match each rightmost bit to see if 1 or 0 */
 	{
-		check = n >> count;
-		if (check & 1)
+		if (n & mask)
 			_putchar('1');
 		else
 			_putchar('0');
-		count--;
+
+		mask >>= 1;
 	}
 }
