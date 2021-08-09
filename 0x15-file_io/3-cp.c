@@ -1,4 +1,5 @@
 #include "main.h"
+#include "holberton.h"
 
 /**
  * __exit - prints error messages and exits with exit value
