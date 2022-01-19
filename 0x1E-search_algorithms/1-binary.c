@@ -1,7 +1,7 @@
 #include "search_algos.h"
 
 /**
- * print_arr - helper func to print array everytime array is halved
+ * my_print - helper func to print array everytime array is halved
  * @array: array
  * @l: left index of original array
  * @r: right index of original array
